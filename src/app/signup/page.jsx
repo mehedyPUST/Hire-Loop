@@ -15,9 +15,12 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import { Check, Mail, Lock, User, Image as ImageIcon } from "lucide-react";
-
+import { Radio, RadioGroup } from "@heroui/react";
+import { useState } from "react";
 export default function SignUpPage() {
     const router = useRouter();
+
+    const [role, setRole] = useState('seeker')
 
     const onSubmit = async (e) => {
         e.preventDefault();
@@ -36,6 +39,7 @@ export default function SignUpPage() {
                 email,
                 password,
                 image,
+                role,
                 callbackURL: '/'
             });
 
@@ -170,6 +174,34 @@ export default function SignUpPage() {
                                 </Description>
                                 <FieldError className="text-xs text-rose-400 mt-1" />
                             </TextField>
+
+                            {/* role selection  */}
+
+                            <div className="flex flex-col gap-4 ">
+                                <Label className="text-white">Sign Up as</Label>
+                                <RadioGroup defaultValue="seeker" name="role" orientation="horizontal" onChange={value => setRole(value)}>
+                                    <Radio value="seeker">
+                                        <Radio.Control>
+                                            <Radio.Indicator />
+                                        </Radio.Control>
+                                        <Radio.Content>
+                                            <Label className="text-white">Job Seeker</Label>
+                                            <Description>For Job Hunting</Description>
+                                        </Radio.Content>
+                                    </Radio>
+                                    <Radio value="recruiter">
+                                        <Radio.Control>
+                                            <Radio.Indicator />
+                                        </Radio.Control>
+                                        <Radio.Content>
+                                            <Label className="text-white">Recruiter</Label>
+                                            <Description>To offer Jobs</Description>
+                                        </Radio.Content>
+                                    </Radio>
+
+                                </RadioGroup>
+                            </div>
+
 
                             {/* Action Buttons */}
                             <div className="flex gap-3 pt-2">
