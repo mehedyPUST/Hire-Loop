@@ -4,12 +4,14 @@ import { Bars, Bell, Envelope, Gear, House, Magnifier, Person } from "@gravity-u
 import { Button, Drawer } from "@heroui/react";
 import { LayoutSideContentLeft } from '@gravity-ui/icons';
 import Link from "next/link";
+import { Briefcase } from "lucide-react";
 
 export function DashboardSidebar() {
     const navItems = [
         { icon: House, href: '/dashboard/recruiter', label: "Home" },
         { icon: Magnifier, href: '/dashboard/recruiter/jobs', label: "Jobs" },
         { icon: Bell, href: '/dashboard/recruiter/jobs/new', label: "Create a Job" },
+        { icon: Briefcase, href: '/dashboard/recruiter/company', label: "Company Profile" },
         { icon: Envelope, href: '#', label: "Messages" },
         { icon: Person, href: '#', label: "Profile" },
         { icon: Gear, href: '#', label: "Settings" },
